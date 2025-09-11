@@ -7,14 +7,20 @@
     <script src="./script.js" defer></script>
   </head>
   <body>
-    <div id="loading-text"></div>
-    <div class="dots" id="dots" style="display: none">
-      <span>.</span><span>.</span><span>.</span>
-    </div>
-
-    <div class="progress-container">
-      <div class="progress-bar" id="progress-bar"></div>
-      <span class="progress-text" id="progress-text">0%</span>
+    <div class="container">
+      <div class="loading-line">
+        <div id="loading-text"></div>
+        <div class="dots" id="dots" style="display: none">
+          <span>.</span><span>.</span><span>.</span>
+        </div>
+      </div>
+  
+      <div class="progress-container" id="progress-container">
+        <div class="progress-bar" id="progress-bar">
+          <span class="progress-text" id="progress-text">0%</span>
+        </div>
+      </div>
     </div>
   </body>
+  
 </html>
