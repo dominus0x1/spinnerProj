@@ -2,24 +2,56 @@ const loadingText = document.getElementById("loading-text");
 const dots = document.getElementById("dots");
 const progressBar = document.getElementById("progress-bar");
 const progressText = document.getElementById("progress-text");
+const progressContainer = document.getElementById("progress-container");
 
 const frames = [
+  ">  ",
+  "> _",
+  ">  ",
   "> _",
   ">  ",
   "> _",
   ">  ",
   "> _",
-  "> _",
+
+  "> L",
   "> L_",
+  "> L",
+
   "> Lo_",
+  "> Lo",
+  "> Lo_",
+
+  "> Loa ",
   "> Loa_",
+  "> Loa ",
+
   "> Load_",
+  "> Load",
+  "> Load_",
+
+  "> Loadi ",
   "> Loadi_",
+  "> Loadi",
+
   "> Loadin_",
+  "> Loadin",
+  "> Loadin_",
+
+  "> Loading",
   "> Loading_",
-  "> Loading ._",
-  "> Loading . ._",
-  "> Loading . . .",
+  "> Loading",
+
+  "> Loading._",
+  "> Loading.",
+  "> Loading._",
+
+  "> Loading..",
+  "> Loading.._",
+  "> Loading..",
+
+  "> Loading... ",
+  "> Loading... ",
 ];
 
 let frameIndex = 0;
@@ -34,7 +66,7 @@ let interval = setInterval(() => {
     if (frameIndex >= frames.length) {
       typing = false;
       loadingText.textContent = "> Loading";
-      dots.style.display = "inline-block"; // فعال شدن انیمیشن نقطه‌ها
+      dots.style.display = "inline"; // فعال شدن انیمیشن نقطه‌ها
     }
   }
 
@@ -49,7 +81,6 @@ let interval = setInterval(() => {
     loadingText.textContent = "✓ Completed!";
     loadingText.classList.add("success");
     dots.style.display = "none";
-    progressBar.style.background = "limegreen";
-    progressText.textContent = "100%";
+    progressContainer.style.display = "none"; // پراگرس بار حذف بشه
   }
 }, 200);
