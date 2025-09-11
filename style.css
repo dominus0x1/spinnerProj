@@ -4,12 +4,20 @@ body {
   font-family: monospace;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* محتوا وسط عمودی */
+  align-items: center;     /* محتوا وسط افقی */
   height: 100vh;
 }
 
-#loading-text {
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* محتوا داخل کانتینر چپ‌چین */
+}
+
+.loading-line {
+  display: flex;
+  align-items: center;
   font-size: 1.5rem;
   margin-bottom: 20px;
   white-space: pre;
@@ -42,21 +50,24 @@ body {
   height: 20px;
   border: 1px solid white;
   position: relative;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .progress-bar {
   background: white;
   height: 100%;
   width: 0;
+  position: relative;
   transition: width 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .progress-text {
-  position: absolute;
-  top: -25px;
-  left: 0;
   font-size: 14px;
+  color: black;
+  font-weight: bold;
 }
 
 .success {
