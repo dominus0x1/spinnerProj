@@ -1,63 +1,3 @@
-const loadingText = document.getElementById("loading-text");
-const dots = document.getElementById("dots");
-const progressBar = document.getElementById("progress-bar");
-const progressText = document.getElementById("progress-text");
-const progressContainer = document.getElementById("progress-container");
-
-const frames = [
-  ">  ",
-  "> _",
-  ">  ",
-  "> _",
-  ">  ",
-  "> _",
-  ">  ",
-  "> _",
-
-  "> L",
-  "> L_",
-  "> L",
-
-  "> Lo_",
-  "> Lo",
-  "> Lo_",
-
-  "> Loa ",
-  "> Loa_",
-  "> Loa ",
-
-  "> Load_",
-  "> Load",
-  "> Load_",
-
-  "> Loadi ",
-  "> Loadi_",
-  "> Loadi",
-
-  "> Loadin_",
-  "> Loadin",
-  "> Loadin_",
-
-  "> Loading",
-  "> Loading_",
-  "> Loading",
-
-  "> Loading._",
-  "> Loading.",
-  "> Loading._",
-
-  "> Loading..",
-  "> Loading.._",
-  "> Loading..",
-
-  "> Loading... ",
-  "> Loading... ",
-];
-
-let frameIndex = 0;
-let progress = 0;
-let typing = true;
-
 // let interval = setInterval(() => {
 //   if (typing) {
 //     loadingText.textContent = frames[frameIndex];
@@ -84,12 +24,110 @@ let typing = true;
 //     progressContainer.style.display = "none"; // پراگرس بار حذف بشه
 //   }
 // }, 200);
+// const frames = [
+//   ">  ",
+//   "> _",
+//   ">  ",
+//   "> _",
+//   ">  ",
+//   "> _",
+//   ">  ",
+//   "> _",
+
+//   "> L",
+//   "> L_",
+//   "> L",
+
+//   "> Lo_",
+//   "> Lo",
+//   "> Lo_",
+
+//   "> Loa ",
+//   "> Loa_",
+//   "> Loa ",
+
+//   "> Load_",
+//   "> Load",
+//   "> Load_",
+
+//   "> Loadi ",
+//   "> Loadi_",
+//   "> Loadi",
+
+//   "> Loadin_",
+//   "> Loadin",
+//   "> Loadin_",
+
+//   "> Loading",
+//   "> Loading_",
+//   "> Loading",
+
+//   "> Loading._",
+//   "> Loading.",
+//   "> Loading._",
+
+//   "> Loading..",
+//   "> Loading.._",
+//   "> Loading..",
+
+//   "> Loading... ",
+//   "> Loading... ",
+// ];
+
+
+// --> Timing Configuration.
+
+const CONFIG = {
+  typingSpeed: 20,
+  progressSpeed: 50,
+  progressStep: 1,
+};
+
+
+// --> DOM Elements Selectors.
+
+const loadingText = document.getElementById("loading-text");
+const dots = document.getElementById("dots");
+const progressBar = document.getElementById("progress-bar");
+const progressText = document.getElementById("progress-text");
+const progressContainer = document.getElementById("progress-container");
+
+
+// --> Initial Values.
+
+let frameIndex = 0;
+let progress = 0;
+let typing = true;
+
+
+// --> Generating typing frames.
 
 function loadingWord(word) {
   const frames = [];
-  for (let i = 0; i < 10; i++) frames.push(`> ${i % 2 ? '_' : ''}`);
+  for (let i = 0; i < 10; i++) frames.push(`> ${i % 2 ? "_" : ""}`);
 
   return frames;
 }
 
 const wordsFrames = loadingWord("Loading");
+
+
+
+// --> Typing Animation.
+
+function typingAnimation() {
+  if (!typing) return;
+
+  loadingText.textContent = wordsFrames[frameIndex];
+  frameIndex++;
+
+  if (frameIndex >= wordsFrames.length) {
+    typing = false;
+    loadingText.textContent = "> Loading";
+    return;
+  }
+  setTimeout(typingAnimation, CONFIG.typingSpeed);
+}
+
+
+
