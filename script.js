@@ -131,3 +131,37 @@ function typingAnimation() {
 
 
 
+// --> Progress Animation.
+
+function runProgress() {
+  if (progress < 100) {
+    progress += CONFIG.progressStep;
+    progressBar.style.width = `${progress}%`;
+    progressText.textContent = `${progress}%`;
+    setTimeout(runProgress, CONFIG.progressSpeed);
+  } else {
+    onComplete();
+  }
+}
+
+
+
+// --> Complete State.
+
+function onComplete() {
+  loadingText.textContent = "✓ Completed!";
+  loadingText.classList.add("success");
+  dots.style.display = "none";
+  progressContainer.style.display = "none";
+}
+
+
+
+// --> Start.
+
+function startLoading() {
+  runTyping();
+  runProgress();
+}
+
+startLoading();
