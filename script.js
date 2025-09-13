@@ -106,10 +106,28 @@ function loadingWord(word) {
   const frames = [];
   for (let i = 0; i < 10; i++) frames.push(`> ${i % 2 ? "_" : ""}`);
   for (let i = 1; i <= word.length; i++) {
-    frames.push("> " + word.slice(0, i));
-    frames.push("> " + word.slice(0, i) + "_");
+    if (i % 2) {
+      frames.push("> " + word.slice(0, i));
+      frames.push("> " + word.slice(0, i) + "_");
+      frames.push("> " + word.slice(0, i));
+    } else {
+      frames.push("> " + word.slice(0, i) + "_");
+      frames.push("> " + word.slice(0, i));
+      frames.push("> " + word.slice(0, i) + "_");
+    }
   }
-  
+  for (let dots = 1; dots <= 3; dots++) {
+    if (dots % 2) {
+      frames.push(`> ${word}${".".repeat(dots)}`);
+      frames.push(`> ${word}${".".repeat(dots)}_`);
+      frames.push(`> ${word}${".".repeat(dots)}`);
+    } else {
+      frames.push(`> ${word}${".".repeat(dots)}_`);
+      frames.push(`> ${word}${".".repeat(dots)}`);
+      frames.push(`> ${word}${".".repeat(dots)}_`);
+    }
+  }
+  frames.push(`> ${word}...`);
   return frames;
 }
 
