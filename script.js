@@ -183,7 +183,7 @@ function onComplete() {
 // --> Start.
 
 function startLoading() {
-  loadingWord();
+  typingAnimation();
   runProgress();
 }
 
