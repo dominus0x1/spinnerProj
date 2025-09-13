@@ -20,17 +20,8 @@ let typing = true;
 // --> Generating typing frames.
 function loadingWord(word) {
   const frames = [];
-  for (let i = 0; i < 10; i++) frames.push(`> ${i % 2 ? "_" : ""}`);
-  for (let i = 1; i <= word.length; i++) {
-    if (i % 2) {
-      frames.push("> " + word.slice(0, i));
-      frames.push("> " + word.slice(0, i) + "");
-      frames.push("> " + word.slice(0, i));
-    } else {
-      frames.push("> " + word.slice(0, i) + "_");
-      frames.push("> " + word.slice(0, i));
-      frames.push("> " + word.slice(0, i) + "_");
-    }
+  for (let i = 0; i < 10; i++){
+      frames.push("> " + word.slice(0, i)) + blinkingLoop();
   }
   return frames;
 }
@@ -69,7 +60,7 @@ function blinkingLoop() {
   if (!typing && progress < 100) {
     loadingText.textContent = `> Loading... ${progress % 2 ? "_" : ""}`;
   }
-  setTimeout(blinkingLoop, 40);
+  setTimeout(blinkingLoop, 50);
 }
 
 // --> Complete State.
