@@ -146,6 +146,7 @@ function typingAnimation() {
   if (frameIndex >= wordsFrames.length) {
     typing = false;
     loadingText.textContent = "> Loading";
+    dots.style.display = "inline";
     return;
   }
   setTimeout(typingAnimation, CONFIG.typingSpeed);
