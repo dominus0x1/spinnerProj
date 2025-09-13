@@ -105,7 +105,11 @@ let typing = true;
 function loadingWord(word) {
   const frames = [];
   for (let i = 0; i < 10; i++) frames.push(`> ${i % 2 ? "_" : ""}`);
-
+  for (let i = 1; i <= word.length; i++) {
+    frames.push("> " + word.slice(0, i));
+    frames.push("> " + word.slice(0, i) + "_");
+  }
+  
   return frames;
 }
 
